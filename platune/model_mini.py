@@ -141,14 +141,15 @@ class PLaTuneMini(pl.LightningModule):
 
         for i in range(n_log):
             self.logger.experiment.add_audio(
-                f"val_audio/original_{i}",
-                z_orig_audio[i],
-                self.global_step,
-                sample_rate=self.sample_rate,
-            )
-            self.logger.experiment.add_audio(
-                f"val_audio/synth_{i}",
+                f"val_audio/0_synth_{i}",
                 z_synth_audio[i],
                 self.global_step,
                 sample_rate=self.sample_rate,
             )
+            self.logger.experiment.add_audio(
+                f"val_audio/1_original_{i}",
+                z_orig_audio[i],
+                self.global_step,
+                sample_rate=self.sample_rate,
+            )
+
