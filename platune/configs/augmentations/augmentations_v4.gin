@@ -1,0 +1,57 @@
+from __gin__ import dynamic_registration
+
+
+# Enabled augmentations are applied in the fixed script order:
+# noise -> filter -> pitch_shift -> chorus -> reverb -> mix
+ENABLED_AUGMENTATIONS = [
+    "pitch_shift"
+]
+
+
+# White noise
+NOISE_MIN_SNR_DB = 6.0
+NOISE_MAX_SNR_DB = 64.0
+NOISE_BETA_A = 0.2
+
+
+# Filter
+LPF_MIN_FREQ = 120.0
+LPF_MAX_FREQ = 12000.0
+HPF_MIN_FREQ = 60.0
+HPF_MAX_FREQ = 6000.0
+FILTER_BETA_A = 0.4
+
+
+# Pitch shift
+PITCH_SHIFT_MIN_SEMITONES = -6.0
+PITCH_SHIFT_MAX_SEMITONES = 6.0
+PITCH_SHIFT_BETA_A = 0.4
+
+
+# Chorus
+CHORUS_RATE_HZ_MIN = 0.5
+CHORUS_RATE_HZ_MAX = 5.0
+CHORUS_DEPTH_MIN = 0.15
+CHORUS_DEPTH_MAX = 0.8
+CHORUS_CENTRE_DELAY_MIN = 5.0
+CHORUS_CENTRE_DELAY_MAX = 15.0
+CHORUS_FEEDBACK_MIN = -0.5
+CHORUS_FEEDBACK_MAX = 0.5
+CHORUS_MIX_MIN = 0.1
+CHORUS_MIX_MAX = 1.0
+CHORUS_BETA_A = 0.2
+
+
+# Reverb
+REVERB_ROOM_SIZE_MIN = 0.2
+REVERB_ROOM_SIZE_MAX = 1.0
+REVERB_DAMPING_MIN = 0.2
+REVERB_DAMPING_MAX = 0.9
+REVERB_WET_MIN = 0.0
+REVERB_WET_MAX = 1.0
+REVERB_BETA_A = 0.2
+
+
+# Random mix
+MIX_MAX_ALPHA = 0.5
+MIX_BETA_A = 0.2
