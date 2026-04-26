@@ -135,10 +135,17 @@ class PLaTuneMini(pl.LightningModule):
 
         z = batch[0].to(self.device)
         n_log = min(self.n_audio_examples, z.shape[0])
+        z_orig_audio = self.decode_latent_to_audio(z[:n_log])
         z_synth = self.s_to_z(torch.randn_like(z[:n_log]), nb_steps=self.nb_steps)
         z_synth_audio = self.decode_latent_to_audio(z_synth)
 
         for i in range(n_log):
+            self.logger.experiment.add_audio(
+                f"val_audio/original_{i}",
+                z_orig_audio[i],
+                self.global_step,
+                sample_rate=self.sample_rate,
+            )
             self.logger.experiment.add_audio(
                 f"val_audio/synth_{i}",
                 z_synth_audio[i],
